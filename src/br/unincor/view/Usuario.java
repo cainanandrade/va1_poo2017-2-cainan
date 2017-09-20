@@ -1,8 +1,5 @@
 package br.unincor.view;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.swing.JOptionPane;
 
 /**
@@ -21,29 +18,24 @@ public class Usuario {
 		JOptionPane.showMessageDialog(null, texto, "ERRO", JOptionPane.ERROR_MESSAGE);
 	}
 
-	public void exibeMsgDebug(String texto) {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		System.out.println(sdf.format(new Date()) + " - [DEBUG] " + texto);
-	}
-
 	public Integer recebeInteiro(String texto) {
-		return Integer.parseInt(JOptionPane.showInputDialog(texto));
-	}
-
-	public Long recebeLong(String texto) {
-		return Long.parseLong(JOptionPane.showInputDialog(texto));
+		try {
+			return Integer.parseInt(JOptionPane.showInputDialog(texto));
+		} catch (Exception e) {
+			exibeMsg("Entrada inválida");
+		} 
+		
+		return null;
 	}
 
 	public Double recebeDouble(String texto) {
-		return Double.parseDouble(JOptionPane.showInputDialog(texto));
-	}
-
-	public Float recebeFloat(String texto) {
-		return Float.parseFloat(JOptionPane.showInputDialog(texto));
-	}
-
-	public Boolean recebeBoolean(String texto) {
-		return Boolean.parseBoolean(JOptionPane.showInputDialog(texto));
+		try {
+			return Double.parseDouble(JOptionPane.showInputDialog(texto));
+		} catch (Exception e) {
+			exibeMsg("Entrada inválida");
+		}
+		
+		return null;		
 	}
 
 	public String recebeTexto(String texto) {

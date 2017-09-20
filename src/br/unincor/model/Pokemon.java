@@ -12,9 +12,17 @@ public class Pokemon {
 		super();
 		this.nome = nome;
 		this.tipo = tipo;
-		this.peso = peso;
-		this.altura = altura;
-		this.cp = cp;
+		this.cp = (long)(Math.random()*49 + 1);
+		
+		if (peso == null || peso < 0)
+			this.peso = 0.0;
+		else
+			this.peso = peso;
+		
+		if (altura == null || altura < 0)
+			this.altura = 0.0;
+		else
+			this.altura = altura;
 	}
 	
 	public String getNome() {
@@ -27,13 +35,19 @@ public class Pokemon {
 		return peso;
 	}
 	public void setPeso(Double peso) {
-		this.peso = peso;
+		if (peso == null || peso < 0)
+			this.peso = 0.0;
+		else
+			this.peso = peso;
 	}
 	public Double getAltura() {
 		return altura;
 	}
 	public void setAltura(Double altura) {
-		this.altura = altura;
+		if (altura == null || altura < 0)
+			this.altura = 0.0;
+		else
+			this.altura = altura;
 	}
 	public Long getCp() {
 		return cp;
@@ -50,6 +64,8 @@ public class Pokemon {
 	
 	/** Implementar este método para retornar os dados do pokemon **/
 	public String verDados() {
-		return "";
+		return "~POKEMON~\n\nNome: " + this.nome + "\nTipo: " + this.tipo + 
+				"\nPeso: " + this.peso + "\nAltura: " + this.altura + "\nCP: "
+				+ this.cp;
 	}
 }
